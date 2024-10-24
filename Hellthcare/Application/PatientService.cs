@@ -35,6 +35,19 @@ public class PatientService(
         
         var newAppointment = director.CreateAppointment(patientId, from, to, doctorId, []);
 
+        CheckReservableAsset(newAppointment, patient);
+        
+        patient.Appointments.Add(newAppointment);
+        
+        IConfirmationVisitor visitor = new ConfirmationVisitor(emailSender, textSender, "You have an appointment!", patient);
+        
+        newAppointment.ConfirmationStrategy.Accept(visitor);
+
+        repository.SavePatient(patient);
+    }
+
+    private void CheckReservableAsset(Appointment newAppointment, Patient patient)
+    {
         if (newAppointment.ReservableAsset != null) { // 
             // Claim machine if possible
             // Find all patients. Check if any has reserved the asset. If not, allow
@@ -47,13 +60,5 @@ public class PatientService(
                 }
             }
         }
-        
-        patient.Appointments.Add(newAppointment);
-        
-        IConfirmationVisitor visitor = new ConfirmationVisitor(emailSender, textSender, "You have an appointment!", patient);
-        
-        newAppointment.ConfirmationStrategy.Accept(visitor);
-
-        repository.SavePatient(patient);
     }
 }
