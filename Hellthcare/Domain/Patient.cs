@@ -1,4 +1,6 @@
 
+using Hellthcare.Domain.Appointments;
+
 namespace Hellthcare.Domain;
 
 public class Patient {

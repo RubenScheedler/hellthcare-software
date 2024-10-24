@@ -1,7 +1,6 @@
 using Hellthcare.Application;
 using Hellthcare.Web.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Hellthcare.Domain;
 
 namespace Hellthcare.Web.Controllers;
 
@@ -19,14 +18,13 @@ public class PatientController(PatientService patientService) : Controller
         [FromRoute] Guid patientId,
         [FromBody] CreateAppointment createAppointment)
     {
-        var appointment = new Appointment()
-        {
-            PatientId = createAppointment.PatientId,
-            DoctorId = createAppointment.DoctorId,
-            From = createAppointment.From,
-            To = createAppointment.To
-        };
-        patientService.MakeAppointment(patientId, appointment);
+        patientService.MakeAppointment(
+            patientId, 
+            createAppointment.AppointmentType, 
+            createAppointment.From, 
+            createAppointment.To, 
+            createAppointment.DoctorId
+        );
         
         return Ok();
     }
