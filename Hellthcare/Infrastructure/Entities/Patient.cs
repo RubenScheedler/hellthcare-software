@@ -1,4 +1,4 @@
-namespace Hellthcare.Entities;
+namespace Hellthcare.Infrastructure.Entities;
 
 public class Patient
 {

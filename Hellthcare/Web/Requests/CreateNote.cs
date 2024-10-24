@@ -1,4 +1,4 @@
-namespace Hellthcare.Requests;
+namespace Hellthcare.Web.Requests;
 
 public record CreateNote(
     Guid PatientId, 

@@ -1,4 +1,4 @@
-using Hellthcare.Entities;
+using Hellthcare.Infrastructure.Entities;
 
 namespace Hellthcare.Application;
 
