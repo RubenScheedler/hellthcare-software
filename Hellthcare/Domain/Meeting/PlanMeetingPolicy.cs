@@ -29,6 +29,6 @@ internal class PlanMeetingPolicy(
         );
         
         // choreography: let other contexts react on their own
-        messageBroker.Publish(new MeetingSavedEvent(id, command.From, command.To, command.Participants));
+        messageBroker.Publish(new MeetingPlannedEvent(id, command.From, command.To, command.Participants));
     }
 }

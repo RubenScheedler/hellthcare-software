@@ -2,7 +2,7 @@ using SharedKernel;
 
 namespace Domain.Meeting.PublicInterface;
 
-public record MeetingSavedEvent(
+public record MeetingPlannedEvent(
     Guid Id,
     DateTime From,
     DateTime To,
