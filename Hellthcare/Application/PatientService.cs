@@ -5,7 +5,8 @@ namespace Hellthcare.Application;
 
 public class PatientService(
     IPatientRepository repository,
-    IEmailSender emailSender
+    IEmailSender emailSender,
+    ITextSender textSender
 ) {
 
     public Patient GetPatient(Guid id) => repository.GetPatient(id);
@@ -40,10 +41,13 @@ public class PatientService(
 
         patient.Appointments.Add(appointment);
 
+        var notification = "You have an appointment!";
         emailSender.SendEmail(
-            "You have an appointment for: " + appointment.Type, 
+            notification, 
             new IEmailSender.Recipient { EmailAddress = patient.EmailAddress}
         );
+        
+        textSender.SendText(notification, patient.PhoneNumber);
 
         repository.SavePatient(patient);
     }
