@@ -9,6 +9,8 @@ public class Patient {
     public string Address { get; set; }
     public List<string> Notes { get; }
     public List<Appointment> Appointments { get; }
+    public string? Diagnosis { get; set; }
+    public List<string> Prescriptions { get; set; } = [];
 
     public Patient(Guid id, string name, string phoneNumber, string address) {
         Id = id;

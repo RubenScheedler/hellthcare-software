@@ -11,6 +11,4 @@ public class Appointment {
     public Guid DoctorId { get; set; }
     // For some appointments, an intern can attend as well
     public Guid? InternId { get; set; }
-    public string? Diagnosis { get; set; }
-    public List<string> Prescriptions { get; set; } = [];
 }
