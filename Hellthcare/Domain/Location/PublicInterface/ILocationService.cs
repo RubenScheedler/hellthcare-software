@@ -1,6 +1,6 @@
-namespace Location.PublicInterface;
+namespace Domain.Location.PublicInterface;
 
 public interface ILocationService {
-    public bool IsAvailable(Guid LocationId);
-    public void Reserve(Guid LocationId, DateTime From, DateTime To);
+    public bool IsAvailable(Guid locationId, DateTime from, DateTime to);
+    public void Reserve(Guid locationId, DateTime from, DateTime to);
 }
