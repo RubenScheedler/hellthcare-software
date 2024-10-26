@@ -1,5 +1,3 @@
-using Hellthcare.Domain.Enums;
-
 namespace Hellthcare.Web.Requests;
 
 public record CreateAppointment(
@@ -7,5 +5,5 @@ public record CreateAppointment(
     DateTime To, 
     Guid PatientId, 
     Guid DoctorId,
-    AppointmentType AppointmentType
+    Guid LocationId
 );

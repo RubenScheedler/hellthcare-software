@@ -1,15 +1,16 @@
 using Domain.Location.PublicInterface;
-using SharedKernel;
+using MediatR;
 
 namespace Domain.Meeting.PublicInterface;
 
 internal class PlanMeetingPolicy(
     IMeetingRepository repository,
     ILocationService locationService,
-    IMessageBroker messageBroker
-) : IPlanMeetingPolicy {
-    public void HandleMessage(PlanMeetingCommand command) {
-        
+    IMediator mediator
+) : IRequestHandler<PlanMeetingCommand> {
+    
+    public async Task Handle(PlanMeetingCommand command, CancellationToken cancellationToken)
+    {
         // TODO niet hier doen maar in aggr zelf?
         if (!locationService.IsAvailable(command.LocationId, command.From, command.To)) {
             return; // TODO throw exception
@@ -29,6 +30,8 @@ internal class PlanMeetingPolicy(
         );
         
         // choreography: let other contexts react on their own
-        messageBroker.Publish(new MeetingPlannedEvent(id, command.From, command.To, command.Participants));
+        await mediator.Publish(new MeetingPlannedEvent(id, command.From, command.To, command.Participants));
     }
+
+
 }

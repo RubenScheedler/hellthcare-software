@@ -1,4 +1,4 @@
-using SharedKernel;
+using MediatR;
 
 namespace Domain.Meeting.PublicInterface;
 
@@ -7,4 +7,4 @@ public record MeetingPlannedEvent(
     DateTime From,
     DateTime To,
     List<Participant> Participants
-) : IEvent;
+) : INotification;

@@ -1,0 +1,14 @@
+﻿### Make an Appointment
+POST http://localhost:5159/patient/6764c061-077b-42da-bda6-48b76728b3cd/appointment
+Content-Type: application/json
+
+{
+  "From": "2024-11-01T09:00:00",
+  "To": "2024-11-01T10:00:00",
+  "LocationId": "79ad3377-d733-4fec-9cc9-4aff82904032",
+  "PatientId": "2c8587ad-afdc-42be-9fb0-ed8ad39c2efc",
+  "DoctorId": "761575b4-51a7-4768-8d61-4b3d8d147a33"
+}
+
+### Get appointment
+GET http://localhost:5159/api/patient/6764c061-077b-42da-bda6-48b76728b3cd

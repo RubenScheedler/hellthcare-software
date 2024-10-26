@@ -2,14 +2,14 @@ using Hellthcare.Domain.Location;
 
 namespace Domain.Location;
 
-internal class LocationRepository {
-    internal LocationAggregate GetLocation(Guid id)
+internal class LocationRepository : ILocationRepository {
+    public LocationAggregate GetLocation(Guid id)
     {
-        throw new NotImplementedException();
+        return new LocationAggregate(id, "MRI Room", []);
     }
 
-    internal void SaveLocation(LocationAggregate location)
+    public void SaveLocation(LocationAggregate location)
     {
-        throw new NotImplementedException();
+
     }
 }

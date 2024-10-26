@@ -1,11 +1,11 @@
 ﻿namespace Hellthcare.Domain.Location;
 
-public class LocationAggregate
+public class LocationAggregate(Guid id, string name, List<Reservation> reservations)
 {
-    private Guid Id { get; set; }
-    private string Name { get; set; }
-    private List<Reservation> Reservations { get; set; }
-    
+    private Guid Id { get; set; } = id;
+    private string Name { get; set; } = name;
+    private List<Reservation> Reservations { get; set; } = reservations;
+
     public bool IsAvailable(DateTime from, DateTime to)
     {
         return !Reservations.Any(r => r.OverlapsWith(from, to));

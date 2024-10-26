@@ -1,6 +1,8 @@
+using Hellthcare.Domain.Location;
+
 namespace Domain.Location.PublicInterface;
 
-class LocationService(LocationRepository repository) : ILocationService {
+class LocationService(ILocationRepository repository) : ILocationService {
 
     public bool IsAvailable(Guid locationId, DateTime from, DateTime to) {
         var location = repository.GetLocation(locationId);

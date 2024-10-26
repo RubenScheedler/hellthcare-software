@@ -1,3 +1,5 @@
+using MediatR;
+
 namespace Domain.Meeting.PublicInterface;
 
 public record PlanMeetingCommand(
@@ -5,4 +7,4 @@ public record PlanMeetingCommand(
     DateTime To,
     Guid LocationId, 
     List<Participant> Participants
-);
+) : IRequest;
