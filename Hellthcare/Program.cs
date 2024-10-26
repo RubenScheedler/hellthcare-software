@@ -1,15 +1,12 @@
 using System.Reflection;
-using Domain.Location;
-using Domain.Location.PublicInterface;
-using Domain.Meeting;
-using Domain.Meeting.PublicInterface;
-using Domain.Patient.PublicInterface;
-using Hellthcare.Application;
-using Hellthcare.Application.Abstraction;
-using Hellthcare.Domain.Location;
-using Hellthcare.Domain.Meeting;
-using Hellthcare.Domain.Notification;
+using Hellthcare.Core.Location.PublicInterface;
+using Hellthcare.Core.Meeting.PublicInterface;
+using Hellthcare.Core.Notification;
+using Hellthcare.Core.Notification.PublicInterface;
+using Hellthcare.Core.Patient.PublicInterface;
 using Hellthcare.Infrastructure;
+using Hellthcare.Infrastructure.Communication;
+using Hellthcare.Infrastructure.Persistance;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,7 +16,6 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
 
-builder.Services.AddSingleton<DbContext>();
 builder.Services.AddSingleton<PatientService>();
 builder.Services.AddSingleton<IPatientRepository, PatientRepository>();
 
