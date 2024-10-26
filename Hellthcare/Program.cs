@@ -3,6 +3,7 @@ using Domain.Location;
 using Domain.Location.PublicInterface;
 using Domain.Meeting;
 using Domain.Meeting.PublicInterface;
+using Domain.Patient.PublicInterface;
 using Hellthcare.Application;
 using Hellthcare.Application.Abstraction;
 using Hellthcare.Domain.Location;

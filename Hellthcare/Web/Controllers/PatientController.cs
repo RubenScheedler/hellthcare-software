@@ -1,6 +1,6 @@
 using Domain.Meeting;
 using Domain.Meeting.PublicInterface;
-using Hellthcare.Application;
+using Domain.Patient.PublicInterface;
 using Hellthcare.Web.Requests;
 using Microsoft.AspNetCore.Mvc;
 using MediatR;
