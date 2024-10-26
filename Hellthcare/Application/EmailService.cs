@@ -1,8 +1,10 @@
+using Hellthcare.Application.Abstraction;
+
 namespace Hellthcare.Application;
 
-public class EmailService
+public class EmailService : IEmailSender
 {
-    public void SendEmail(string to, string subject, string body)
+    public void SendEmail(string body, IEmailSender.Recipient recipient)
     {
         
     }
