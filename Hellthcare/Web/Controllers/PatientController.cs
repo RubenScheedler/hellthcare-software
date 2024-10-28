@@ -1,12 +1,13 @@
-using Hellthcare.Application;
+using Hellthcare.Core.Meeting.Domain;
+using Hellthcare.Core.Meeting.PublicInterface;
+using Hellthcare.Core.Patient.PublicInterface;
 using Hellthcare.Web.Requests;
 using Microsoft.AspNetCore.Mvc;
-using Hellthcare.Domain;
+using MediatR;
 
 namespace Hellthcare.Web.Controllers;
 
-[Route("api/[controller]")]
-public class PatientController(PatientService patientService) : Controller
+public class PatientController(PatientService patientService, IMediator mediator) : Controller
 {
     [HttpGet("/patient/{patientId:guid}")]
     public IActionResult GetPatient([FromRoute] Guid patientId)
@@ -19,15 +20,16 @@ public class PatientController(PatientService patientService) : Controller
         [FromRoute] Guid patientId,
         [FromBody] CreateAppointment createAppointment)
     {
-        var appointment = new Appointment()
-        {
-            PatientId = createAppointment.PatientId,
-            DoctorId = createAppointment.DoctorId,
-            From = createAppointment.From,
-            To = createAppointment.To
-        };
-        patientService.MakeAppointment(patientId, appointment);
-        
+        mediator.Send(new PlanMeetingCommand(
+                createAppointment.From,
+                createAppointment.To,
+                createAppointment.LocationId,
+                [
+                    new Participant(createAppointment.PatientId),
+                    new Participant(createAppointment.DoctorId)
+                ]
+            )
+        );
         return Ok();
     }
 
