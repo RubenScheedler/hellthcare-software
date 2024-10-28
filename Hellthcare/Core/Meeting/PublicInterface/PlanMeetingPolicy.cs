@@ -12,13 +12,8 @@ internal class PlanMeetingPolicy(
     
     public async Task Handle(PlanMeetingCommand command, CancellationToken cancellationToken)
     {
-        // TODO niet hier doen maar in aggr zelf?
-        if (!locationService.IsAvailable(command.LocationId, command.From, command.To)) {
-            return; // TODO throw exception
-        }
-
         // orchestration: instruct other context to perform operation
-        locationService.Reserve(command.LocationId, command.From, command.To); // TODO command
+        locationService.Reserve(command.LocationId, command.From, command.To); 
 
         var id = Guid.NewGuid();
         repository.SaveMeeting(
