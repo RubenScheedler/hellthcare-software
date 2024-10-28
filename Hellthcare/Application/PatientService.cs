@@ -1,5 +1,6 @@
 using Hellthcare.Application.Abstraction;
 using Hellthcare.Domain;
+// ReSharper disable ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
 
 namespace Hellthcare.Application;
 
@@ -31,7 +32,8 @@ public class PatientService(
             // Find all patients. Check if any has reserved the MRI. If not, allow
             var patients = repository.GetPatients();
 
-            foreach (var p in patients) {
+            foreach (var p in patients) 
+            {
                 var items = patient.GetOverlappingPlanningItems(appointment.From, appointment.To);
                 if (items.Any(i => i.Type == appointment.Type)) { // Machine is taken in this timeslot already!
                     throw new InvalidOperationException("Machine for appointment is not available");
