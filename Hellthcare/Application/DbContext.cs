@@ -8,7 +8,7 @@ public class DbContext
     {
         return [];
     }
-    
+
     public IEnumerable<Doctor> GetDoctors()
     {
         return [];
@@ -16,7 +16,6 @@ public class DbContext
 
     public void Save(Appointment appointment)
     {
-        
     }
 
     public void Save(Patient patient)

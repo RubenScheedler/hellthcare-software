@@ -15,12 +15,8 @@ public class PatientController(
     {
         var patients = dbContext.GetPatients();
         foreach (var patient in patients)
-        {
             if (patient.Id == patientId)
-            {
                 return Ok(patient);
-            }
-        }
 
         throw new Exception("Patient not found");
     }
@@ -61,7 +57,7 @@ public class PatientController(
 
         patient.Notes.Add(
             new Patient.Note(
-                createNote.Text, 
+                createNote.Text,
                 DateTime.Now));
 
         dbContext.Save(patient);

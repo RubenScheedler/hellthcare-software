@@ -1,6 +1,6 @@
 namespace Hellthcare.Requests;
 
 public record CreateNote(
-    Guid PatientId, 
+    Guid PatientId,
     string Text
 );
