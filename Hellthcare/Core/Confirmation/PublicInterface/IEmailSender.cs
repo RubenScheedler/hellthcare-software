@@ -1,5 +1,5 @@
 
-namespace Hellthcare.Core.Notification.PublicInterface;
+namespace Hellthcare.Core.Confirmation.PublicInterface;
 
 public interface IEmailSender {
     public void SendEmail(string body, Recipient recipient);

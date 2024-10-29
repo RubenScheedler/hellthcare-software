@@ -1,4 +1,4 @@
-using Hellthcare.Core.Notification.PublicInterface;
+using Hellthcare.Core.Confirmation.PublicInterface;
 
 namespace Hellthcare.Infrastructure.Communication;
 

@@ -1,9 +1,9 @@
 using Hellthcare.Core.Meeting.PublicInterface;
 using MediatR;
 
-namespace Hellthcare.Core.Notification;
+namespace Hellthcare.Core.Confirmation;
 
-public class SendMeetingNotificationPolicy : INotificationHandler<MeetingPlannedEvent>
+public class SendMeetingConfirmationPolicy : INotificationHandler<MeetingPlannedEvent>
 {
     public Task Handle(MeetingPlannedEvent meetingPlanned, CancellationToken cancellationToken)
     {

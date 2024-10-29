@@ -1,4 +1,4 @@
-﻿namespace Hellthcare.Core.Notification.PublicInterface;
+﻿namespace Hellthcare.Core.Confirmation.PublicInterface;
 
 public interface ITextSender
 {

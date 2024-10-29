@@ -1,8 +1,8 @@
 using System.Reflection;
+using Hellthcare.Core.Confirmation;
+using Hellthcare.Core.Confirmation.PublicInterface;
 using Hellthcare.Core.Location.PublicInterface;
 using Hellthcare.Core.Meeting.PublicInterface;
-using Hellthcare.Core.Notification;
-using Hellthcare.Core.Notification.PublicInterface;
 using Hellthcare.Core.Patient.PublicInterface;
 using Hellthcare.Infrastructure;
 using Hellthcare.Infrastructure.Communication;
@@ -27,7 +27,7 @@ builder.Services.AddSingleton<PlanMeetingPolicy>();
 
 builder.Services.AddSingleton<IEmailSender, EmailService>();
 builder.Services.AddSingleton<ITextSender, TextService>();
-builder.Services.AddSingleton<SendMeetingNotificationPolicy>();
+builder.Services.AddSingleton<SendMeetingConfirmationPolicy>();
 
 var app = builder.Build();
 
