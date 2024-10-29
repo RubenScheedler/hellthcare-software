@@ -1,5 +1,6 @@
 using Hellthcare.Application.Abstraction;
 using Hellthcare.Domain;
+
 // ReSharper disable ForeachCanBeConvertedToQueryUsingAnotherGetEnumerator
 
 namespace Hellthcare.Application;
@@ -8,36 +9,42 @@ public class PatientService(
     IPatientRepository repository,
     IEmailSender emailSender,
     ITextSender textSender
-) {
+)
+{
+    public Patient GetPatient(Guid id)
+    {
+        return repository.GetPatient(id);
+    }
 
-    public Patient GetPatient(Guid id) => repository.GetPatient(id);
-
-    public void CreateNote(Guid patientId, string note) {
+    public void CreateNote(Guid patientId, string note)
+    {
         var patient = repository.GetPatient(patientId);
-        
+
         patient.Notes.Add(note);
 
         repository.SavePatient(patient);
     }
 
     public void MakeAppointment(
-        Guid patientId, 
+        Guid patientId,
         Appointment appointment
-    ) {
+    )
+    {
         var patient = repository.GetPatient(patientId);
 
         // All scan operations are divisble by 8. The rest not.
-        if ((int)appointment.Type % 8 == 0) { // 
+        if ((int)appointment.Type % 8 == 0)
+        {
+            // 
             // Claim machine if possible
             // Find all patients. Check if any has reserved the MRI. If not, allow
             var patients = repository.GetPatients();
 
-            foreach (var p in patients) 
+            foreach (var p in patients)
             {
                 var items = patient.GetOverlappingPlanningItems(appointment.From, appointment.To);
-                if (items.Any(i => i.Type == appointment.Type)) { // Machine is taken in this timeslot already!
+                if (items.Any(i => i.Type == appointment.Type)) // Machine is taken in this timeslot already!
                     throw new InvalidOperationException("Machine for appointment is not available");
-                }
             }
         }
 
@@ -45,10 +52,10 @@ public class PatientService(
 
         var notification = "You have an appointment!";
         emailSender.SendEmail(
-            notification, 
-            new IEmailSender.Recipient { EmailAddress = patient.EmailAddress}
+            notification,
+            new IEmailSender.Recipient { EmailAddress = patient.EmailAddress }
         );
-        
+
         textSender.SendText(notification, patient.PhoneNumber);
 
         repository.SavePatient(patient);

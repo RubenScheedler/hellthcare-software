@@ -1,7 +1,8 @@
 namespace Hellthcare.Domain.Enums;
 
-public enum AppointmentType {
-    Default = 0, 
+public enum AppointmentType
+{
+    Default = 0,
     CheckUp = 1,
     Vaccination = 2,
     Surgery = 4,
