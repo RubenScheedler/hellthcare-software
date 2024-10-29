@@ -1,8 +1,13 @@
 namespace Hellthcare.Core.Meeting.Domain;
 
-internal class MeetingAggregate(Guid id, DateTime from, DateTime to, List<Participant> participants) {
+internal class MeetingAggregate(
+    Guid id,
+    DateTime from,
+    DateTime to,
+    List<Participant> participants)
+{
     private Guid Id { get; set; } = id;
     private DateTime From { get; set; } = from;
     private DateTime To { get; set; } = to;
-    private List<Participant> Participants {get; } = participants;
+    private List<Participant> Participants { get; } = participants;
 }

@@ -2,8 +2,8 @@ using Hellthcare.Core.Meeting.Domain;
 using Hellthcare.Core.Meeting.PublicInterface;
 using Hellthcare.Core.Patient.PublicInterface;
 using Hellthcare.Web.Requests;
-using Microsoft.AspNetCore.Mvc;
 using MediatR;
+using Microsoft.AspNetCore.Mvc;
 
 namespace Hellthcare.Web.Controllers;
 
@@ -12,7 +12,9 @@ public class PatientController(PatientService patientService, IMediator mediator
     [HttpGet("/patient/{patientId:guid}")]
     public IActionResult GetPatient([FromRoute] Guid patientId)
     {
-        return Ok(patientService.GetPatient(patientId));
+        return Ok(
+            patientService.GetPatient(patientId)
+        );
     }
 
     [HttpPost("/patient/{patientId:guid}/appointment")]
@@ -30,6 +32,7 @@ public class PatientController(PatientService patientService, IMediator mediator
                 ]
             )
         );
+
         return Ok();
     }
 
@@ -38,7 +41,10 @@ public class PatientController(PatientService patientService, IMediator mediator
         [FromRoute] Guid patientId,
         [FromBody] CreateNote createNote)
     {
-        patientService.CreateNote(patientId, createNote.Text);
+        patientService.CreateNote(
+            patientId,
+            createNote.Text
+        );
 
         return Ok();
     }

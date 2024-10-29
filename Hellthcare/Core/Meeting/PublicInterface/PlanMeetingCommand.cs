@@ -6,6 +6,6 @@ namespace Hellthcare.Core.Meeting.PublicInterface;
 public record PlanMeetingCommand(
     DateTime From,
     DateTime To,
-    Guid LocationId, 
+    Guid LocationId,
     List<Participant> Participants
 ) : IRequest;

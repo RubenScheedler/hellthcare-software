@@ -4,7 +4,6 @@ using Hellthcare.Core.Confirmation.PublicInterface;
 using Hellthcare.Core.Location.PublicInterface;
 using Hellthcare.Core.Meeting.PublicInterface;
 using Hellthcare.Core.Patient.PublicInterface;
-using Hellthcare.Infrastructure;
 using Hellthcare.Infrastructure.Communication;
 using Hellthcare.Infrastructure.Persistance;
 
@@ -32,10 +31,7 @@ builder.Services.AddSingleton<SendMeetingConfirmationPolicy>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-    app.MapOpenApi();
-}
+if (app.Environment.IsDevelopment()) app.MapOpenApi();
 
 app.UseRouting();
 app.MapControllers();

@@ -8,12 +8,18 @@ internal class PlanMeetingPolicy(
     IMeetingRepository repository,
     ILocationService locationService,
     IMediator mediator
-) : IRequestHandler<PlanMeetingCommand> {
-    
-    public async Task Handle(PlanMeetingCommand command, CancellationToken cancellationToken)
+) : IRequestHandler<PlanMeetingCommand>
+{
+    public async Task Handle(
+        PlanMeetingCommand command,
+        CancellationToken cancellationToken)
     {
         // orchestration: instruct other context to perform operation
-        locationService.Reserve(command.LocationId, command.From, command.To); 
+        locationService.Reserve(
+            command.LocationId,
+            command.From,
+            command.To
+        );
 
         var id = Guid.NewGuid();
         repository.SaveMeeting(
@@ -24,10 +30,15 @@ internal class PlanMeetingPolicy(
                 command.Participants
             )
         );
-        
+
         // choreography: let other contexts react on their own
-        await mediator.Publish(new MeetingPlannedEvent(id, command.From, command.To, command.Participants));
+        await mediator.Publish(
+            new MeetingPlannedEvent(
+                id,
+                command.From,
+                command.To,
+                command.Participants
+            )
+        );
     }
-
-
 }
