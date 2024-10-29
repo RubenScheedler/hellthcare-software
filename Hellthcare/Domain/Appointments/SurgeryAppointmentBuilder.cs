@@ -21,7 +21,7 @@ public class SurgeryAppointmentBuilder : IAppointmentBuilder
     {
         return null;
     }
-    
+
     public IConfirmationStrategy CreateConfirmationStrategy()
     {
         return new EmailAndTextConfirmationStrategy();

@@ -21,7 +21,7 @@ public class XRayScanAppointmentBuilder : IAppointmentBuilder
     {
         return null;
     }
-    
+
     public IConfirmationStrategy CreateConfirmationStrategy()
     {
         return new EmailAndTextConfirmationStrategy();

@@ -10,7 +10,9 @@ public class PatientController(PatientService patientService) : Controller
     [HttpGet("/patient/{patientId:guid}")]
     public IActionResult GetPatient([FromRoute] Guid patientId)
     {
-        return Ok(patientService.GetPatient(patientId));
+        return Ok(
+            patientService.GetPatient(patientId)
+        );
     }
 
     [HttpPost("/patient/{patientId:guid}/appointment")]
@@ -19,13 +21,13 @@ public class PatientController(PatientService patientService) : Controller
         [FromBody] CreateAppointment createAppointment)
     {
         patientService.MakeAppointment(
-            patientId, 
-            createAppointment.AppointmentType, 
-            createAppointment.From, 
-            createAppointment.To, 
+            patientId,
+            createAppointment.AppointmentType,
+            createAppointment.From,
+            createAppointment.To,
             createAppointment.DoctorId
         );
-        
+
         return Ok();
     }
 
@@ -34,7 +36,10 @@ public class PatientController(PatientService patientService) : Controller
         [FromRoute] Guid patientId,
         [FromBody] CreateNote createNote)
     {
-        patientService.CreateNote(patientId, createNote.Text);
+        patientService.CreateNote(
+            patientId,
+            createNote.Text
+        );
 
         return Ok();
     }

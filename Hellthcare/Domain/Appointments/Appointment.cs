@@ -6,19 +6,8 @@ using Hellthcare.Domain.Enums;
 
 namespace Hellthcare.Domain.Appointments;
 
-public sealed class Appointment {
-    public Guid Id { get; set; }
-    public AppointmentType Type { get; set; }
-    public Guid PatientId { get; set; }
-    public DateTimeOffset From { get; set; }
-    public DateTimeOffset To { get; set; }
-    public Guid DoctorId { get; set; }
-    
-    public IReservableAsset? ReservableAsset { get; }
-    public IDiagnosis? Diagnosis { get; }
-    public List<IGuest> Guests { get; }
-    public IConfirmationStrategy ConfirmationStrategy { get; }
-
+public sealed class Appointment
+{
     internal Appointment(
         Guid id,
         AppointmentType type,
@@ -43,4 +32,16 @@ public sealed class Appointment {
         Guests = guests;
         ConfirmationStrategy = confirmationStrategy;
     }
+
+    public Guid Id { get; set; }
+    public AppointmentType Type { get; set; }
+    public Guid PatientId { get; set; }
+    public DateTimeOffset From { get; set; }
+    public DateTimeOffset To { get; set; }
+    public Guid DoctorId { get; set; }
+
+    public IReservableAsset? ReservableAsset { get; }
+    public IDiagnosis? Diagnosis { get; }
+    public List<IGuest> Guests { get; }
+    public IConfirmationStrategy ConfirmationStrategy { get; }
 }

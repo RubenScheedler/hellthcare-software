@@ -3,5 +3,5 @@
 public enum GuestType
 {
     Default = 0,
-    Intern = 1,
+    Intern = 1
 }

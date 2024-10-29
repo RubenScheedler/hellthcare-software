@@ -2,5 +2,8 @@
 
 public interface ITextSender
 {
-    public void SendText(string text, string patientPhoneNumber);
+    public void SendText(
+        string text,
+        string patientPhoneNumber
+    );
 }

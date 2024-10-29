@@ -21,7 +21,7 @@ public class DefaultAppointmentBuilder : IAppointmentBuilder
     {
         return null;
     }
-    
+
     public IConfirmationStrategy CreateConfirmationStrategy()
     {
         return new EmailAndTextConfirmationStrategy();

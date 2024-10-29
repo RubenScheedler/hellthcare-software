@@ -21,7 +21,7 @@ public class MriScanAppointmentBuilder : IAppointmentBuilder
     {
         return null;
     }
-    
+
     public IConfirmationStrategy CreateConfirmationStrategy()
     {
         return new EmailAndTextConfirmationStrategy();

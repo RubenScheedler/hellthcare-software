@@ -4,10 +4,9 @@ namespace Hellthcare.Domain.Appointments;
 
 public class AppointmentCreationDirector(IAppointmentBuilder builder)
 {
-
     public Appointment CreateAppointment(
-        Guid patientId, 
-        DateTimeOffset from, 
+        Guid patientId,
+        DateTimeOffset from,
         DateTimeOffset to,
         Guid doctorId,
         List<IGuest> guests

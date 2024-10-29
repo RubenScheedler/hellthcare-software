@@ -6,6 +6,5 @@ public class TextService : ITextSender
 {
     public void SendText(string text, string patientPhoneNumber)
     {
-        
     }
 }
