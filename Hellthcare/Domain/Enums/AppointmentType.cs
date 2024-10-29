@@ -1,6 +1,7 @@
 namespace Hellthcare.Domain.Enums;
 
-public enum AppointmentType {
+public enum AppointmentType
+{
     Default = 0, // BAD: Programmer wants default, but what is this really?
     CheckUp = 1,
     Vaccination = 2,
