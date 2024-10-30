@@ -22,7 +22,7 @@ public class PatientController(PatientService patientService, IMediator mediator
         [FromRoute] Guid patientId,
         [FromBody] CreateAppointment createAppointment)
     {
-        mediator.Send(new PlanMeetingCommand(
+        mediator.Send(new PlanMeeting(
                 createAppointment.From,
                 createAppointment.To,
                 createAppointment.LocationId,

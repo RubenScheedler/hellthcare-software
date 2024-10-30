@@ -8,10 +8,10 @@ internal class PlanMeetingPolicy(
     IMeetingRepository repository,
     ILocationService locationService,
     IMediator mediator
-) : IRequestHandler<PlanMeetingCommand>
+) : IRequestHandler<PlanMeeting>
 {
     public async Task Handle(
-        PlanMeetingCommand command,
+        PlanMeeting command,
         CancellationToken cancellationToken)
     {
         // orchestration: instruct other context to perform operation
