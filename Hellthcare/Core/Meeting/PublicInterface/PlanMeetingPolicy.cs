@@ -33,7 +33,7 @@ internal class PlanMeetingPolicy(
 
         // choreography: let other contexts react on their own
         await mediator.Publish(
-            new MeetingPlannedEvent(
+            new MeetingPlanned(
                 id,
                 command.From,
                 command.To,

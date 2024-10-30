@@ -3,10 +3,10 @@ using MediatR;
 
 namespace Hellthcare.Core.Confirmation;
 
-public class SendMeetingConfirmationPolicy : INotificationHandler<MeetingPlannedEvent>
+public class SendMeetingConfirmationPolicy : INotificationHandler<MeetingPlanned>
 {
     public Task Handle(
-        MeetingPlannedEvent meetingPlanned,
+        MeetingPlanned meetingPlanned,
         CancellationToken cancellationToken)
     {
         meetingPlanned.Participants.ForEach(participant =>

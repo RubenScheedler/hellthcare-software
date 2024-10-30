@@ -3,7 +3,7 @@ using MediatR;
 
 namespace Hellthcare.Core.Meeting.PublicInterface;
 
-public record MeetingPlannedEvent(
+public record MeetingPlanned(
     Guid Id,
     DateTime From,
     DateTime To,
